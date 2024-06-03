@@ -6,7 +6,9 @@ import React from "react";
 
 const Transfer = async () => {
   const loggedIn = await getLoggedInUser();
-  const accounts = await getAccounts({ userId: loggedIn.$id });
+  const accounts = await getAccounts({
+    userId: loggedIn.$id,
+  });
 
   if (!accounts) return;
 
@@ -15,7 +17,7 @@ const Transfer = async () => {
   return (
     <section className="payment-transfer">
       <HeaderBox
-        title="Payment transfer"
+        title="Payment Transfer"
         subtext="Please provide any specific details or notes related to the payment transfer"
       />
 
