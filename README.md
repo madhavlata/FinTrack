@@ -1,3 +1,7 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Deployed at - https://fintrack-qm4m.onrender.com
 
-I'm currently working on this project and its in development phase.
+While doing sign-up when adding bank account on Plaid, use any bank's credentials as -
+Username - user_good
+Password - pass_good
+
+and directly click on submit buttons for mobile number and verification code page.
