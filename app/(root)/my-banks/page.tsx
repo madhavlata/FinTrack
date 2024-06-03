@@ -6,32 +6,34 @@ import React from "react";
 
 const MyBanks = async () => {
   const loggedIn = await getLoggedInUser();
-  if (!loggedIn && !loggedIn.$id) {
-    return null;
+  if (!loggedIn) {
+    // Handle the case where the user is not logged in
+    return <div>Error: User not logged in</div>;
   }
+
   const accounts = await getAccounts({
     userId: loggedIn.$id,
   });
+
+  if (!accounts || !accounts.data) {
+    // Handle the case where accounts data is not available
+    return <div>Error: Accounts not available</div>;
+  }
 
   return (
     <section className="flex">
       <div className="my-banks">
         <HeaderBox
           title="My Bank Accounts"
-          subtext="Effortlessly manage your banking activites."
+          subtext="Effortlessly manage your banking activities."
         />
 
         <div className="space-y-4">
           <h2 className="header-2">Your cards</h2>
           <div className="flex flex-wrap gap-6">
-            {accounts &&
-              accounts.data.map((a: Account) => (
-                <BankCard
-                  key={accounts.id}
-                  account={a}
-                  userName={loggedIn?.firstName}
-                />
-              ))}
+            {accounts.data.map((a: Account) => (
+              <BankCard key={a.id} account={a} userName={loggedIn?.firstName} />
+            ))}
           </div>
         </div>
       </div>
