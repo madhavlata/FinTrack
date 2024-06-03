@@ -6,6 +6,9 @@ import React from "react";
 
 const MyBanks = async () => {
   const loggedIn = await getLoggedInUser();
+  if (!loggedIn && !loggedIn.$id) {
+    return null;
+  }
   const accounts = await getAccounts({
     userId: loggedIn.$id,
   });
